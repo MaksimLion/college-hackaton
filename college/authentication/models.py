@@ -1,27 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-class Profile(models.Model):
-
-    sex = Models.CharField()
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    group = models.CharField(max_length=10, verbose_name="Группа")
-    skills = models.ManyToManyField(Technology, verbose_name="Стек технологий")
-    career = models.ManyToManyField(ItCompany, verbose_name="Карьера")
-    achievements = models.ManyToManyField(Achievement, verbose_name="Достижения")
-    favorite_subject = models.ManyToManyField(Subject, verbose_name="Любимые предметы")
-    mark = models.CharField(max_length=3, default='0.0', verbose_name="Средний балл")
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+class Subject(models.Model):
+    name = models.CharField(max_length=10, verbose_name="Название")
 
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+class Achievement(models.Model):
+    
+    WINNER = 'winner'
+    PARTICIPANT = 'participant'
+    OPTIONS = (
+        (WINNER,'Призёр'),
+        (PARTICIPANT, 'участник')
+    )
+
+    name = models.CharField(max_length=20)
+    text = models.TextField()
+    option = models.CharField(max_length=20, choices=OPTIONS)
 
 
 class Technology(models.Model):
@@ -51,19 +49,36 @@ class ItCompany(models.Model):
     logo = models.ImageField(blank=True, verbose_name="Логотип", upload_to="companies/logo")
 
 
-class Achievement(models.Model):
-    
-    WINNER = 'winner'
-    PARTICIPANT = 'participant'
-    OPTIONS = {
-        (WINNER,'Призёр')
-        (PARTICIPANT, 'участник')
-    }
+class Profile(models.Model):
 
-    name = models.CharField(max_length=20)
-    text = models.TextField()
-    option = models.CharField(max_length=20, choices=OPTIONS)
+    SEX = (
+        ('m', "Мужской"),
+        ('g', "Женский")
+    )
+
+    sex = models.CharField(max_length=1, choices=SEX, verbose_name="Пол")
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    group = models.CharField(max_length=10, verbose_name="Группа")
+    skills = models.ManyToManyField(Technology, verbose_name="Стек технологий")
+    career = models.ManyToManyField(ItCompany, verbose_name="Карьера")
+    achievements = models.ManyToManyField(Achievement, verbose_name="Достижения")
+    favorite_subject = models.ManyToManyField(Subject, verbose_name="Любимые предметы")
+    mark = models.CharField(max_length=3, default='0.0', verbose_name="Средний балл")
 
 
-class Subject(models.Model):
-    name = models.CharField(max_length=10, verbose_name="Название")
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
+
+
+
+
+
