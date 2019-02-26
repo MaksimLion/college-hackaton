@@ -1,0 +1,86 @@
+.auth-block {
+    width: 44vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #2f2f2f;
+    box-shadow: 3px 2px 8px 0px rgba(50, 50, 50, 0.75);
+}
+
+.auth-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 0;
+    font-size: 1.35rem;
+    width: 100%;
+    background-color: #29aca4;
+    color: #1f1f1f;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 500px;
+}
+
+.auth-form {
+    margin: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.field-label {
+    color: #E9ECEF;
+}
+
+.btn-auth {
+    padding-left: 35px;
+    padding-right: 35px;
+    color: #29aca4;
+    border-color: #29aca4;
+}
+
+.btn-auth:hover {
+    background-color: #29aca4;
+    border-color: #29aca4;
+    box-shadow: 0 5px 15px rgba(0,0,0,.05), 0 4px 10px rgb(41, 172, 164, .25);;
+}
+
+.btn-auth:active {
+    background-color: #29aca4;
+    border-color: #29aca4;
+}
+.btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle {
+    background-color: #29aca4;
+    border-color: #29aca4;
+}
+
+.btn-auth_block {
+    margin-top: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-outline-success.focus, .btn-outline-success:focus {
+    box-shadow: 0 0 0 0.2rem rgba(41, 172, 164,.5)!important;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.form-control:focus {
+    border-color: #29aca4;
+    box-shadow: 0 0 0 0.2rem rgba(41, 172, 164,.25);
+}
+
+.form-control:focus:hover {
+    border-color: #26bdb3;
+}

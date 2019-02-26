@@ -1,0 +1,18 @@
+html {
+    font-size: 15px;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    background: rgb(81,142,160);
+    //background: linear-gradient(185deg, rgba(81,142,160,1) 0%, rgba(63,124,145,1) 6%, rgba(43,74,92,1) 52%, rgba(44,49,69,1) 100%);
+    background: linear-gradient(to right, #f1f2b5, #135058);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
