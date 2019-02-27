@@ -7,5 +7,6 @@ from authentication import views
 urlpatterns = [
     #path('', views.sign_up),
     path('sign_in/', views.sign_in),
-    path('my_account/', views.student)
+    path('sign_up/', views.sign_up),
+    path('my_account/', views.student),
 ]
