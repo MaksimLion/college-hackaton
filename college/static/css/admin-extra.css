@@ -186,3 +186,16 @@ input:focus {
         margin-right: 0!important;
     }
 }
+
+a:link, a:visited {
+    color: #4da38c;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.object-tools a:focus, .object-tools a:hover {
+    background-color: #4da38c;
+    text-decoration: none;
+}
