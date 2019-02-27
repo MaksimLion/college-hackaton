@@ -8,6 +8,11 @@
     box-shadow: 3px 2px 8px 0px rgba(50, 50, 50, 0.75);
 }
 
+.auth-block.register {
+    width: 50vw;
+    min-width: 515px;
+}
+
 .auth-header {
     display: flex;
     justify-content: center;
@@ -93,5 +98,12 @@ form div {
 @media only screen and (max-width: 780px) {
     .auth-block {
         width: 344px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .auth-block.register {
+        width: 100vw;
+        min-width: auto;
     }
 }
