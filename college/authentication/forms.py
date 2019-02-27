@@ -23,3 +23,11 @@ class ProfileForm(ModelForm):
             'group',
             'phone',
         )
+
+class AuthForm(ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'password',
+        )

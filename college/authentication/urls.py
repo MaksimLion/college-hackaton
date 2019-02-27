@@ -6,6 +6,6 @@ from authentication import views
 
 urlpatterns = [
     path('', views.sign_up),
-    path('signin', views.sign_in),
-    path('student', views.student)
+    path('sign_in/', views.sign_in),
+    path('my_account/', views.student)
 ]

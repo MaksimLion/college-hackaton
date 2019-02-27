@@ -1,3 +1,4 @@
 function signup() {
-    document.location.href = "/"
+    event.preventDefault()
+    document.location.href = "/sign_up"
 }

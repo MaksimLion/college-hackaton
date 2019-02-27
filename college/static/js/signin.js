@@ -1,3 +1,4 @@
 function signin() {
-    document.location.href = "/signin"
+    event.preventDefault()
+    document.location.href = "/sign_in"
 }

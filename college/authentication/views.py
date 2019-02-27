@@ -1,20 +1,31 @@
 from django.shortcuts import render, redirect
 from .models import Profile
-from .forms import UserForm, ProfileForm
+from .forms import UserForm, ProfileForm, AuthForm
 from django.contrib.auth import authenticate,login
+
 
 def student(request):
     return render(request, 'student.html')
 
 
 def sign_in(request):
+    
     if request.method == 'POST':
-        user_form = UserForm(request.POST)
+        user_form = AuthForm(request.POST)
         
         if user_form.is_valid:
-            pass
+            username = user_form.cleaned_data.get('username')
+            password = user_form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+
+            if user is not None and user.is_active:
+                login(request, user)
+                return redirect('/my_account')
+            else:
+                return redirect('/sign_in')
+    
     else:
-        user_form = UserForm()
+        user_form = AuthForm()
         context = {
             'user_form' : user_form
         }
