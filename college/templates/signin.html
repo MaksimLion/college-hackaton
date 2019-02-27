@@ -28,10 +28,11 @@
 
         <div class="btn-auth_block">
             <input class="btn btn-outline-success btn-squared btn-auth" type="submit" value="Войти">
-            <input class="btn btn-secondary btn-squared" type="button" value="Зарегистрироваться">
+            <input onclick="signup()" class="btn btn-secondary btn-squared" type="button" value="Зарегистрироваться">
         </div>
         
     </form>
 </div>
+<script src="{% static 'js/signup.js' %}"></script>
 
 {% endblock content%}

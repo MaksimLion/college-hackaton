@@ -28,10 +28,11 @@
 
         <div class="btn-auth_block">
             <input class="btn btn-outline-success btn-squared btn-auth" type="submit" value="Регистрация">
-            <input class="btn btn-secondary btn-squared" type="button" value="Уже есть аккаунт">
+            <input onclick="signin()" class="btn btn-secondary btn-squared" type="button" value="Уже есть аккаунт">
         </div>
         
     </form>
 </div>
+<script src="{% static 'js/signin.js' %}"></script>
 
 {% endblock content%}
