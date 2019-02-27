@@ -21,9 +21,15 @@ def sign_in(request):
             if user is not None and user.is_active:
                 login(request, user)
                 return render(request, 'student.html')
+                
             else:
-                print('error')
-                return redirect('/sign_in')
+                user_form = AuthForm()
+                context = {
+                    'user_form' : user_form,
+                    'error' : 'неудачный вход, попробуйте ещё'
+                }
+
+                return render(request, 'sign-in.html', context)
 
         else:
             return redirect('/my_account')
@@ -83,5 +89,6 @@ def simple(request):
 def my_account(request):
      if request.user.is_authenticated:
          profile = request.user.get_profile()
-         print(profile)
+         profile.
+         
 

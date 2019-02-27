@@ -24,6 +24,7 @@ class ProfileForm(ModelForm):
             'phone',
         )
 
+
 class AuthForm(ModelForm):
     class Meta:
         model = User
