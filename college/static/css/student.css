@@ -1,5 +1,7 @@
 .content {
     margin-top: 25px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
     background-color: #f2f2f2;
     width: 75vw;
     min-height: 750px;
@@ -78,9 +80,11 @@
     justify-content: flex-start;
     margin-left: 15px;
     width: 100%;
+    overflow: hidden;
 }
 
 .skills-header {
+    box-shadow: 0 0px 6px 0 #343a40;
     cursor: default;
     display: flex;
     justify-content: center;
@@ -106,6 +110,10 @@
     color: #747474;
 }
 
+.skill-logo {
+    width: 16px;
+}
+
 .achivments {
     box-shadow: 0 1px 10px 0 #d7d8db, 0 0 0 1px #d4d5d8;
     display: flex;
@@ -113,6 +121,7 @@
     justify-content: flex-start;
     margin-top: 20px;
     width: 100%;
+    overflow: hidden;
 }
 
 .achivments-header {
@@ -123,6 +132,7 @@
     color: #f2f2f2;
     font-size: 1.1rem;
     padding: 4px 0;
+    box-shadow: 0 0px 6px 0 #343a40;
 }
 
 .achivments-list {
@@ -174,6 +184,7 @@
     justify-content: flex-start;
     margin-top: 20px;
     width: 100%;
+    overflow: hidden;
 }
 
 .career-header {
@@ -184,6 +195,7 @@
     color: #f2f2f2;
     font-size: 1.1rem;
     padding: 4px 0;
+    box-shadow: 0 0px 6px 0 #343a40;
 }
 
 .career-list {
