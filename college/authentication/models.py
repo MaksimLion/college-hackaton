@@ -18,11 +18,11 @@ class Subject(models.Model):
 
 class Achievement(models.Model):
     
-    WINNER = 'winner'
-    PARTICIPANT = 'participant'
+    WINNER = 'Призер'
+    PARTICIPANT = 'Участник'
     OPTIONS = (
         (WINNER,'Призёр'),
-        (PARTICIPANT, 'участник')
+        (PARTICIPANT, 'Участник')
     )
 
     name = models.CharField(max_length=20)
@@ -39,11 +39,11 @@ class Achievement(models.Model):
 
 class Technology(models.Model):
     
-    LANGUAGE = 'lang'
-    CMS = 'cms'
-    TOOL = 'tool'
-    ENGINE = 'engine'
-    DB = 'database'
+    LANGUAGE = 'Язык программирования'
+    CMS = 'CMS'
+    TOOL = 'Инструмент'
+    ENGINE = 'Движок'
+    DB = 'База данных'
 
     OPTIONS = (
         (LANGUAGE, 'Язык программирования'),
@@ -83,13 +83,13 @@ class ItCompany(models.Model):
 class Profile(models.Model):
 
     SEX = (
-        ('m', "Мужской"),
-        ('g', "Женский")
+        ('Мужской', "Мужской"),
+        ('Женский', "Женский")
     )
 
     
     phone = models.CharField(max_length=15, verbose_name="Мобильный телефон")
-    sex = models.CharField(max_length=1, choices=SEX, verbose_name="Пол")
+    sex = models.CharField(max_length=10, choices=SEX, verbose_name="Пол")
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     group = models.CharField(max_length=10, verbose_name="Группа")
     skills = models.ManyToManyField(Technology, verbose_name="Стек технологий")
