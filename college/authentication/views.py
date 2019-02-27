@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import UserForm, ProfileForm
+from django.contrib.auth import authenticate,login
 
 def student(request):
     return render(request, 'student.html')
@@ -25,14 +26,30 @@ def sign_up(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST)
-        
-        if user_form.is_valid and profile_form.is_valid:
+
+        if user_form.is_valid() and profile_form.is_valid():
             new_user = user_form.save()
-            new_profile = Profile.objects.create(user=new_user)
+            new_user.refresh_from_db()
+            sex = profile_form.cleaned_data.get('sex')
+            phone = profile_form.cleaned_data.get('phone')
+            group = profile_form.cleaned_data.get('group')
+            
+            new_profile = Profile.objects.create(
+                user=new_user, 
+                sex=sex, 
+                phone=phone, 
+                group=group
+            )
+
             new_profile.save()
-            return render(request, 'student.html')
+            new_user.save()
+            username = user_form.cleaned_data.get('username')
+            password = user_form.cleaned_data.get('password')
+            new_user = authenticate(usernam=username, password=password)
+            login(request, new_user)
+            return render(request, 'sign-up.html')
 
-
+        return redirect('/')
 
     else:
         user_form = UserForm()
