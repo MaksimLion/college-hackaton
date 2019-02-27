@@ -20,9 +20,12 @@ def sign_in(request):
 
             if user is not None and user.is_active:
                 login(request, user)
-                return redirect('/my_account')
+                return render(request, 'student.html')
             else:
                 return redirect('/sign_in')
+
+        else:
+            return redirect('/my_account')
     
     else:
         user_form = AuthForm()
@@ -32,45 +35,47 @@ def sign_in(request):
         return render(request, 'sign-in.html', context)
 
 
-def sign_up(request):
+# def sign_up(request):
 
-    if request.method == 'POST':
-        user_form = UserForm(request.POST)
-        profile_form = ProfileForm(request.POST)
+#     if request.method == 'POST':
+#         user_form = UserForm(request.POST)
+#         profile_form = ProfileForm(request.POST)
 
-        if user_form.is_valid() and profile_form.is_valid():
-            new_user = user_form.save()
-            new_user.refresh_from_db()
-            sex = profile_form.cleaned_data.get('sex')
-            phone = profile_form.cleaned_data.get('phone')
-            group = profile_form.cleaned_data.get('group')
+#         if user_form.is_valid() and profile_form.is_valid():
+#             new_user = user_form.save()
+#             new_user.refresh_from_db()
+#             sex = profile_form.cleaned_data.get('sex')
+#             phone = profile_form.cleaned_data.get('phone')
+#             group = profile_form.cleaned_data.get('group')
             
-            new_profile = Profile.objects.create(
-                user=new_user, 
-                sex=sex, 
-                phone=phone, 
-                group=group
-            )
+#             new_profile = Profile.objects.create(
+#                 user=new_user, 
+#                 sex=sex, 
+#                 phone=phone, 
+#                 group=group
+#             )
 
-            new_profile.save()
-            new_user.save()
-            username = user_form.cleaned_data.get('username')
-            password = user_form.cleaned_data.get('password')
-            new_user = authenticate(usernam=username, password=password)
-            login(request, new_user)
-            return render(request, 'sign-up.html')
+#             new_profile.save()
+#             new_user.is
+#             new_user.save()
+#             username = user_form.cleaned_data.get('username')
+#             password = user_form.cleaned_data.get('password')
+#             new_user = authenticate(username=username, password=password)
+#             login(request, new_user)
+#             return render(request, 'sign-up.html')
 
-        return redirect('/')
+#         return redirect('/')
 
-    else:
-        user_form = UserForm()
-        profile_form = ProfileForm()
-        context = {
-            'profile_form' : profile_form,
-            'user_form' : user_form
-        }
-        return render(request, 'sign-up.html', context)
+#     else:
+#         user_form = UserForm()
+#         profile_form = ProfileForm()
+#         context = {
+#             'profile_form' : profile_form,
+#             'user_form' : user_form
+#         }
+#         return render(request, 'sign-up.html', context)
 
 
 def simple(request):
     return render(request, 'sign-up.html')
+ 
