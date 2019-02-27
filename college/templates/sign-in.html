@@ -8,8 +8,14 @@
 
 <div class="auth-block">
     <div class="auth-header">ВХОД В АККАУНТ</div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Oh no!</strong> Something terrible happened!
+      </div>
     <form class="auth-form" method="POST" action="/sign_in/">
-        
+
         {% csrf_token %}
         
         {% for field in user_form %}
