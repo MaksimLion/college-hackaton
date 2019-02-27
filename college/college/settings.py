@@ -84,7 +84,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-AUTH_PROFILE_MODULE = 'authentication.Profile'
+
+#AUTH_PROFILE_MODULE = 'authentication.Profile'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

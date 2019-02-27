@@ -64,11 +64,11 @@ def sign_up(request):
 
             new_profile.save()
             new_user.save()
-            username = user_form.cleaned_data.get('username')
-            password = user_form.cleaned_data.get('password')
-            new_user = authenticate(username=username, password=password)
-            login(request, new_user)
-            return render(request, 'sign-up.html')
+            # username = user_form.cleaned_data.get('username')
+            # password = user_form.cleaned_data.get('password')
+            # new_user = authenticate(username=username, password=password)
+            # login(request, new_user)
+            return redirect('/sign_in/')
 
         return redirect('/')
 
