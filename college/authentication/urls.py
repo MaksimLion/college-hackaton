@@ -8,5 +8,5 @@ urlpatterns = [
     #path('', views.sign_up),
     path('sign_in/', views.sign_in),
     path('sign_up/', views.sign_up),
-    path('my_account/', views.student),
+    path('my_account/', views.my_account),
 ]

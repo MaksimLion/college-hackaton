@@ -20,7 +20,7 @@ def sign_in(request):
 
             if user is not None and user.is_active:
                 login(request, user)
-                return render(request, 'student.html')
+                return redirect('my_account/')
                 
             else:
                 user_form = AuthForm()
@@ -83,20 +83,21 @@ def sign_up(request):
  
 
 def my_account(request):
+
     if request.user.is_authenticated:
         first_name = request.user.first_name
         last_name = request.user.last_name
         email = request.user.email
-        profile = request.user.get_profile()
+        profile = Profile.objects.get(pk=request.user.pk)
         phone = profile.phone
         sex = profile.sex
         group = profile.group
         mark = profile.mark
-        career = profile.career_set.all()
-        skills = profile.skills_set.all()
-        achievements = profile.achievements_set.all()
-        favorite_subjects = profile.favorite_subject_set.all()
-
+        career = profile.career.all()
+        skills = profile.skills.all()
+        achievements = profile.achievements.all()
+        favorite_subjects = profile.favorite_subject.all()
+        print(first_name)
         context = {
             'first_name' : first_name,
             'last_name' : last_name,
