@@ -2,7 +2,22 @@ from django.shortcuts import render
 from .models import Profile
 from .forms import UserForm, ProfileForm
 
-def auth(request):
+def signin(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        
+        if user_form.is_valid:
+            new_user = user_form.save()
+
+
+    else:
+        user_form = UserForm()
+        context = {
+            'user_form' : user_form
+        }
+        return render(request, 'signin.html', context)
+
+def signup(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST)
@@ -20,8 +35,8 @@ def auth(request):
             'profile_form' : profile_form,
             'user_form' : user_form
         }
-        return render(request, 'auth.html', context)
+        return render(request, 'signup.html', context)
 
 
 def simple(request):
-    return render(request, 'auth.html')
+    return render(request, 'signup.html')

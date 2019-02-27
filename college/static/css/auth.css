@@ -1,6 +1,6 @@
 .auth-block {
     width: 44vw;
-    height: 50vh;
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -16,22 +16,27 @@
     padding: 7px 0;
     font-size: 1.35rem;
     width: 100%;
-    background-color: #29aca4;
+    background-color: #49b396;
     color: #1f1f1f;
     font-weight: bold;
 }
 
 input[type="text"] {
-    width: 500px;
+    width: 100%;
+}
+
+form div {
+    width: 100%;
 }
 
 .auth-form {
-    margin: 0 20px;
+    width: 86%;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
+    padding: 20px 0;
 }
 
 .field-label {
@@ -41,23 +46,23 @@ input[type="text"] {
 .btn-auth {
     padding-left: 35px;
     padding-right: 35px;
-    color: #29aca4;
-    border-color: #29aca4;
+    color: #49b396;
+    border-color: #49b396;
 }
 
 .btn-auth:hover {
-    background-color: #29aca4;
-    border-color: #29aca4;
+    background-color: #49b396;
+    border-color: #49b396;
     box-shadow: 0 5px 15px rgba(0,0,0,.05), 0 4px 10px rgb(41, 172, 164, .25);;
 }
 
 .btn-auth:active {
-    background-color: #29aca4;
-    border-color: #29aca4;
+    background-color: #49b396;
+    border-color: #49b396;
 }
 .btn-outline-success:not(:disabled):not(.disabled).active, .btn-outline-success:not(:disabled):not(.disabled):active, .show>.btn-outline-success.dropdown-toggle {
-    background-color: #29aca4;
-    border-color: #29aca4;
+    background-color: #49b396;
+    border-color: #49b396;
 }
 
 .btn-auth_block {
@@ -69,7 +74,7 @@ input[type="text"] {
 }
 
 .btn-outline-success.focus, .btn-outline-success:focus {
-    box-shadow: 0 0 0 0.2rem rgba(41, 172, 164,.5)!important;
+    box-shadow: 0 0 0 0.2rem rgba(73, 179, 150,.5)!important;
 }
 
 .form-control {
@@ -77,10 +82,17 @@ input[type="text"] {
 }
 
 .form-control:focus {
-    border-color: #29aca4;
-    box-shadow: 0 0 0 0.2rem rgba(41, 172, 164,.25);
+    border-color: #49b396;
+    box-shadow: 0 0 0 0.2rem rgba(73, 179, 150,.25);
 }
 
 .form-control:focus:hover {
-    border-color: #26bdb3;
+    border-color: #49b396;
+}
+
+
+@media only screen and (max-width: 780px) {
+    .auth-block {
+        width: 344px;
+    }
 }

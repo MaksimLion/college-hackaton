@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block extra-styles %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock extra-styles %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="auth-block">
+    <div class="auth-header">РЕГИСТРАЦИЯ АККАУНТА</div>
+    <form class="auth-form" method="POST" action="/">
+        
+        {% csrf_token %}
+        
+        {% for field in user_form %}
+        <div>
+            <label class="col-form-label field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{field|add_class:'form-control'}}
+        </div>
+        {% endfor %}
+        
+        {% for field in profile_form %}
+        <div>
+            <label class="col-form-label field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{field|add_class:'form-control'}}
+        </div>
+        {% endfor %}
+
+        <div class="btn-auth_block">
+            <input class="btn btn-outline-success btn-squared btn-auth" type="submit" value="Регистрация">
+            <input class="btn btn-secondary btn-squared" type="button" value="Уже есть аккаунт">
+        </div>
+        
+    </form>
+</div>
+
+{% endblock content%}
