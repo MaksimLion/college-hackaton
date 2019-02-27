@@ -18,4 +18,5 @@ class ProfileForm(ModelForm):
         fields = (
             'sex',
             'group',
+            'phone',
         )
