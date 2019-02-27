@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import Profile
 from .forms import UserForm, ProfileForm
 
+def student(request):
+    return render(request, 'student.html')
+
 def signin(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block extra-styles %}
+    <link rel="stylesheet" href="{% static 'css/student.css' %}">
+{% endblock extra-styles %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <div class="content">
+        <div class="content-header">
+            <h4>Соловей Ольга</h4>
+            <input class="btn btn-outline-dark btn-squared btn-edit" type="button" value="Редактировать профиль">
+        </div>
+        <main class="main">
+            <div class="profile-info">
+                <div class="avatar">
+                    <img src="https://pp.userapi.com/c846218/v846218552/1ab6a7/W9IlH75B20c.jpg" alt="avatar">
+                    <div class="description">
+                        <ul class="description-list">
+                            <li class="description-item"><div class="desc-title">Дата рождения:</div>24.01.2001</li>
+                            <li class="description-item"><div class="desc-title">Курс:</div>3</li>
+                            <li class="description-item"><div class="desc-title">Группа:</div>ПОБШ</li>
+                            <li class="description-item"><div class="desc-title">Пол:</div>Женский</li>
+                            <li class="description-item"><div class="desc-title">Моб. телефон:</div>+375336995310</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="skills">
+                    <div class="skills-header">УМЕНИЯ</div>
+                    <ul class="skills-list">
+                        <li class="skills-item"><div class="skill-title">JavaScript</div>3</li>
+                        <li class="skills-item"><div class="skill-title">Vue.js</div>2</li>
+                        <li class="skills-item"><div class="skill-title">React.js</div>3</li>
+                        <li class="skills-item"><div class="skill-title">Node.js</div>2</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="achivments">
+                <div class="achivments-header">ДОСТИЖЕНИЯ</div>
+                <ul class="achivments-list">
+                    <li class="achivments-item">
+                        <ul class="ach-list">
+                            <li class="ach-item"></li>
+                            <li class="ach-item"></li>
+                            <li class="ach-item"></li>
+                        </ul>
+                    </li>
+                    <li class="achivments-item">
+                        <ul class="ach-list">
+                            <li class="ach-item"></li>
+                            <li class="ach-item"></li>
+                            <li class="ach-item"></li>
+                        </ul>
+                    </li>
+                    <li class="achivments-item">
+                        <ul class="ach-list">
+                            <li class="ach-item"></li>
+                            <li class="ach-item"></li>
+                            <li class="ach-item"></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+{% endblock content%}
