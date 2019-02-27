@@ -80,15 +80,41 @@ def sign_up(request):
             'user_form' : user_form
         }
         return render(request, 'sign-up.html', context)
-
-
-def simple(request):
-    return render(request, 'sign-up.html')
  
 
-# def my_account(request):
-#      if request.user.is_authenticated:
-#          profile = request.user.get_profile()
-#          profile.
+def my_account(request):
+    if request.user.is_authenticated:
+        first_name = request.user.first_name
+        last_name = request.user.last_name
+        email = request.user.email
+        profile = request.user.get_profile()
+        phone = profile.phone
+        sex = profile.sex
+        group = profile.group
+        mark = profile.mark
+        career = profile.career_set.all()
+        skills = profile.skills_set.all()
+        achievements = profile.achievements_set.all()
+        favorite_subjects = profile.favorite_subject_set.all()
+
+        context = {
+            'first_name' : first_name,
+            'last_name' : last_name,
+            'email' : email,
+            'phone' : phone,
+            'sex' : sex,
+            'group' : group,
+            'career' : career,
+            'skills' : skills,
+            'mark' : mark,
+            'favorite_subjects' : favorite_subjects,
+            'achievements' : achievements
+        }
+
+        return render(request, 'student.html', context)
+    else:
+        return redirect('sign_in/')
+
+
          
 
