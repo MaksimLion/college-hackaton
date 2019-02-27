@@ -5,7 +5,7 @@ from django.urls import path, include
 from authentication import views
 
 urlpatterns = [
-    path('', views.signup),
-    path('signin', views.signin),
+    path('', views.sign_up),
+    path('signin', views.sign_in),
     path('student', views.student)
 ]

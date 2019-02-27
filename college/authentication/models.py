@@ -56,6 +56,8 @@ class Profile(models.Model):
         ('g', "Женский")
     )
 
+    
+    phone = models.CharField(max_length=15, verbose_name="Мобильный телефон")
     sex = models.CharField(max_length=1, choices=SEX, verbose_name="Пол")
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     group = models.CharField(max_length=10, verbose_name="Группа")
@@ -65,6 +67,8 @@ class Profile(models.Model):
     favorite_subject = models.ManyToManyField(Subject, verbose_name="Любимые предметы")
     mark = models.CharField(max_length=3, default='0.0', verbose_name="Средний балл")
 
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

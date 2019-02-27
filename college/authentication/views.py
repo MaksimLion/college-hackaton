@@ -5,22 +5,23 @@ from .forms import UserForm, ProfileForm
 def student(request):
     return render(request, 'student.html')
 
-def signin(request):
+
+def sign_in(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         
         if user_form.is_valid:
-            new_user = user_form.save()
-
-
+            pass
     else:
         user_form = UserForm()
         context = {
             'user_form' : user_form
         }
-        return render(request, 'signin.html', context)
+        return render(request, 'sign-in.html', context)
 
-def signup(request):
+
+def sign_up(request):
+
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST)
@@ -29,6 +30,8 @@ def signup(request):
             new_user = user_form.save()
             new_profile = Profile.objects.create(user=new_user)
             new_profile.save()
+            return render(request, 'student.html')
+
 
 
     else:
@@ -38,8 +41,8 @@ def signup(request):
             'profile_form' : profile_form,
             'user_form' : user_form
         }
-        return render(request, 'signup.html', context)
+        return render(request, 'sign-up.html', context)
 
 
 def simple(request):
-    return render(request, 'signup.html')
+    return render(request, 'sign-up.html')
