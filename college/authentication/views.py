@@ -86,9 +86,9 @@ def simple(request):
     return render(request, 'sign-up.html')
  
 
-def my_account(request):
-     if request.user.is_authenticated:
-         profile = request.user.get_profile()
-         profile.
+# def my_account(request):
+#      if request.user.is_authenticated:
+#          profile = request.user.get_profile()
+#          profile.
          
 
