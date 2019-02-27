@@ -14,22 +14,27 @@ def sign_in(request):
         user_form = AuthForm(request.POST)
         
         if user_form.is_valid():
+            user_form.save()
             username = user_form.cleaned_data.get('username')
             password = user_form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
+            user = authenticate(
+                username=user_form.cleaned_data.get('username'), 
+                password=user_form.cleaned_data.get('password'),
+            )
 
-            if user is not None and user.is_active:
-                login(request, user)
-                return redirect('my_account/')
+            #if user is not None and user.is_active:
+            login(request, user)
+            
+            return redirect('/my_account')
                 
-            else:
-                user_form = AuthForm()
-                context = {
-                    'user_form' : user_form,
-                    'error' : 'неудачный вход, попробуйте ещё'
-                }
+            # else:
+            #     user_form = AuthForm()
+            #     context = {
+            #         'user_form' : user_form,
+            #         'error' : 'неудачный вход, попробуйте ещё'
+            #     }
 
-                return render(request, 'sign-in.html', context)
+            #     return render(request, 'sign-in.html', context)
 
         else:
             return redirect('/my_account')
@@ -64,10 +69,10 @@ def sign_up(request):
 
             new_profile.save()
             new_user.save()
-            # username = user_form.cleaned_data.get('username')
-            # password = user_form.cleaned_data.get('password')
-            # new_user = authenticate(username=username, password=password)
-            # login(request, new_user)
+            username = user_form.cleaned_data.get('username')
+            password = user_form.cleaned_data.get('password')
+           # new_user = authenticate(username=username, password=password)
+            #login(request, new_user)
             return redirect('/sign_in/')
 
         return redirect('/')
@@ -98,7 +103,6 @@ def my_account(request):
         skills = profile.skills.all()
         achievements = profile.achievements.all()
         favorite_subjects = profile.favorite_subject.all()
-        print(first_name)
         context = {
             'first_name' : first_name,
             'last_name' : last_name,
@@ -116,7 +120,7 @@ def my_account(request):
 
         return render(request, 'student.html', context)
     else:
-        return redirect('sign_in/')
+        return redirect('/sign_in/')
 
 
 def logout_view(request):
