@@ -17,6 +17,10 @@
     align-items: center;
 }
 
+.content-header h4 {
+    cursor: default;
+}
+
 .btn-edit {
     font-size: 1.1rem;
 }
@@ -38,11 +42,17 @@
     min-width: 548px;
 }
 
-.avatar img {
+.img-block {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.img-block img {
     object-fit: contain;
-    height: 100%;
     width: 250px;
-    border-radius: 2px;
+    border-radius: 100%;
     box-shadow: 0 1px 0px 0px rgba(50, 50, 50, 0.14);
 }
 
@@ -71,6 +81,7 @@
 }
 
 .skills-header {
+    cursor: default;
     display: flex;
     justify-content: center;
     background-color: #343a40;
@@ -105,6 +116,7 @@
 }
 
 .achivments-header {
+    cursor: default;
     display: flex;
     justify-content: center;
     background-color: #343a40;
@@ -114,14 +126,134 @@
 }
 
 .achivments-list {
-    padding: 0 5px;
+    padding: 0 8px;
+    padding-top: 4px;
 }
 
 .achivments-item {
+    box-shadow: 0 1px 6px 0 #d7d8db, 0 0 0 1px #d4d5d8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.ach-list {
+    list-style-type: none;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.ach-item {
+    height: auto;
+    margin-top: 8px;
+}
+
+.ach-list:last-child {
+    margin-bottom: 8px;
+}
+
+.ach-title {
+    margin-right: 4px;
+    cursor: default;
+    background-color: #343a40;
+    color: #f2f2f2;
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
+.company-logo {
+    width: 30px;
+}
+
+.career {
     box-shadow: 0 1px 10px 0 #d7d8db, 0 0 0 1px #d4d5d8;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 20px;
     width: 100%;
+}
+
+.career-header {
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    background-color: #343a40;
+    color: #f2f2f2;
+    font-size: 1.1rem;
+    padding: 4px 0;
+}
+
+.career-list {
+    list-style-type: none;
+    padding-left: 25px;
+    display: flex;
+}
+
+.career-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-right: 1px solid #d4d4d4;
+    cursor: default;
+}
+
+.career-item img {
+    margin-right: 2px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .content {
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 794px) {
+    .skills-list {
+        padding: 0 5px;
+    }
+
+    .img-block img {
+        width: 175px;
+    }
+
+    .avatar {
+        min-width: 462px;
+    }
+}
+
+@media only screen and (max-width: 654px) {
+    .profile-info {
+        flex-direction: column;
+    }
+
+    .skills-list {
+        padding: 0 15px;
+    }
+
+    .skills {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .career-list {
+        padding-left: 0;
+    }
+}
+
+@media only screen and (max-width: 508px) {
+    .avatar {
+        flex-direction: column;
+        align-items: center;
+        min-width: 248px;
+    }
+
+    .content-header {
+        flex-direction: column;
+    }
 }
