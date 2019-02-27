@@ -97,6 +97,7 @@ class Profile(models.Model):
     achievements = models.ManyToManyField(Achievement, verbose_name="Достижения")
     favorite_subject = models.ManyToManyField(Subject, verbose_name="Любимые предметы")
     mark = models.CharField(max_length=3, default='0.0', verbose_name="Средний балл")
+    photo = models.ImageField(blank=True, upload_to='photos', verbose_name="Аватар")
 
     class Meta:
         verbose_name = "Личные данные"
