@@ -90,6 +90,7 @@ def my_account(request):
         email = request.user.email
         profile = Profile.objects.get(pk=request.user.pk)
         phone = profile.phone
+        photo = profile.photo
         sex = profile.sex
         group = profile.group
         mark = profile.mark
@@ -109,13 +110,18 @@ def my_account(request):
             'skills' : skills,
             'mark' : mark,
             'favorite_subjects' : favorite_subjects,
-            'achievements' : achievements
+            'achievements' : achievements,
+            'photo' : photo
         }
 
         return render(request, 'student.html', context)
     else:
         return redirect('sign_in/')
 
+
+def logout_view(request):
+    logout(request)
+    return redirect('sign_in/')
 
          
 

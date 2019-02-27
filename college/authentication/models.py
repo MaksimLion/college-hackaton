@@ -55,7 +55,7 @@ class Technology(models.Model):
 
     name = models.CharField(max_length=10, verbose_name="Название")
     logo = models.ImageField(blank=True, upload_to="technologies/logo", verbose_name="Логотип")
-    option = models.CharField(max_length=10, choices=OPTIONS, verbose_name="Тип")
+    option = models.CharField(max_length=30, choices=OPTIONS, verbose_name="Тип")
 
     def __str__(self):
         return self.name
