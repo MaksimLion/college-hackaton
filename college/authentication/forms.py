@@ -1,9 +1,9 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Profile
 from django.contrib.auth.models import User
 
 
-class UserForm(ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields =  (
@@ -14,8 +14,15 @@ class UserForm(ModelForm):
             'password',
         )
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.save()
+        return user
 
-class ProfileForm(ModelForm):
+
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = (
@@ -25,10 +32,9 @@ class ProfileForm(ModelForm):
         )
 
 
-class AuthForm(ModelForm):
-    class Meta:
-        model = User
-        fields = (
-            'username',
-            'password',
-        )
+class AuthForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(
+        strip=False,
+        widget=forms.PasswordInput,
+    )

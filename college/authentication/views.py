@@ -14,10 +14,10 @@ def sign_in(request):
         user_form = AuthForm(request.POST)
         
         if user_form.is_valid():
-            user_form.save()
             username = user_form.cleaned_data.get('username')
             password = user_form.cleaned_data.get('password')
             user = authenticate(
+                request,
                 username=user_form.cleaned_data.get('username'), 
                 password=user_form.cleaned_data.get('password'),
             )
@@ -71,7 +71,7 @@ def sign_up(request):
             new_user.save()
             username = user_form.cleaned_data.get('username')
             password = user_form.cleaned_data.get('password')
-           # new_user = authenticate(username=username, password=password)
+           # new_user = authenticate(request, username=username, password=password)
             #login(request, new_user)
             return redirect('/sign_in/')
 
@@ -93,7 +93,7 @@ def my_account(request):
         first_name = request.user.first_name
         last_name = request.user.last_name
         email = request.user.email
-        profile = Profile.objects.get(pk=request.user.pk)
+        profile = Profile.objects.get(user_id=request.user.pk)
         phone = profile.phone
         photo = profile.photo
         sex = profile.sex
