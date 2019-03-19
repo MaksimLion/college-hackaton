@@ -20,8 +20,6 @@ from authentication.models import Subject, Profile
 #     title = models.CharField(max_length=30, verbose_name="Название")
 #     read_file = models.FileField(upload_to="materials/", verbose_name="Методичка")
 
-
-
 #     def __str__(self):
 #         return self.title
 
@@ -31,13 +29,19 @@ from authentication.models import Subject, Profile
 
 
 class Report(models.Model):
+    STATUSES = (
+        ('Зачёт','Зачёт'),
+        ('На проверке', 'На проверке'),
+        ('Незачёт', 'Незачёт')
+    )
+    
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, blank=True, null=True)
     name_executor = models.CharField(max_length=100, verbose_name="Исполнитель")
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)
     group = models.CharField(max_length=10, verbose_name="Группа")
     title = models.CharField(max_length=30, verbose_name="Название")
     file = models.FileField(upload_to="reports/", verbose_name="Отчёт")
-    is_accept = models.BooleanField(default=False, verbose_name="Зачтено")
+    status = models.CharField(max_length=100, default='Незачёт', choices=STATUSES)
 
     def __str__(self):
         return self.name_executor + '---' + self.group + '---' + self.title
