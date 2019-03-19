@@ -7,11 +7,13 @@ class NameModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return "%s"%obj.name
 
+
 class CreateReportForm(forms.Form):
     subject = NameModelChoiceField(
         label = 'Предмет',
         queryset = Subject.objects.all(),
     )
+    
     class Meta:
         fields = (
            'subject',

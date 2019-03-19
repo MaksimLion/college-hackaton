@@ -16,25 +16,27 @@ from authentication.models import Subject, Profile
 #         verbose_name_plural = "Тесты"
     
 
-# class Lab(models.Model):
-#     title = models.CharField(max_length=30, verbose_name="Название")
-#     read_file = models.FileField(upload_to="materials/", verbose_name="Методичка")
+class Lab(models.Model):
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name="Предмет")
+    title = models.CharField(max_length=30, verbose_name="Название")
+    read_file = models.FileField(upload_to="materials/", verbose_name="Методичка")
+    
+    def __str__(self):
+        return self.title
 
-#     def __str__(self):
-#         return self.title
-
-#     class Meta:
-#         verbose_name = "Лабораторная работа"
-#         verbose_name_plural = "Лабораторные работы"
+    class Meta:
+        verbose_name = "Лабораторная работа"
+        verbose_name_plural = "Лабораторные работы"
 
 
 class Report(models.Model):
+    
     STATUSES = (
         ('Зачёт','Зачёт'),
         ('На проверке', 'На проверке'),
         ('Незачёт', 'Незачёт')
     )
-    
+
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, blank=True, null=True)
     name_executor = models.CharField(max_length=100, verbose_name="Исполнитель")
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)

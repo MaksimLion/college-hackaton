@@ -11,5 +11,7 @@ urlpatterns = [
     path('my_account/', views.my_account),
     path('my_account/statistics/', views.statistics),
     path('logout/', views.logout_view),
-    path('send_report/', views.send_report)
+    path('send_report/', views.send_report),
+    path('labs/', views.labs),
+    path('labs/<int:lab_id>/', views.lab_detail)
 ]

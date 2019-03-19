@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Profile
-from virtual_education.models import Report
+from virtual_education.models import Report, Lab
 from .forms import UserForm, ProfileForm, AuthForm
 from virtual_education.forms import CreateReportForm
 from django.contrib.auth import authenticate,login
@@ -149,6 +149,25 @@ def statistics(request):
             'reports' : report_statuses
         }
         return render(request, 'statistics.html', context)
+
+
+def labs(request):
+    labs = Lab.objects.all().prefetch_related('subject')
+    context = {
+        'labs' : labs
+    }
+    return render(request, 'labs.html', context)
+
+
+def lab_detail(request,lab_id):
+    lab = Lab.objects.get(pk=lab_id)
+    with open(lab.read_file, 'rb') as pdf:
+        text = pdf.readline()
+    context = {
+        'text' : text
+    }
+    return render(request, 'lab_detail.html', context)
+
 
 def logout_view(request):
     logout(request)

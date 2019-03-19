@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-# from virtual_education.models import Report
 
 
 class Subject(models.Model):
@@ -13,8 +12,7 @@ class Subject(models.Model):
         verbose_name_plural = "Предметы"
 
     def __str__(self):
-        return self.name
-     
+        return self.name 
 
 
 class Achievement(models.Model):
@@ -66,8 +64,6 @@ class Technology(models.Model):
         verbose_name_plural = "Технологии"
 
     
-
-
 class ItCompany(models.Model):
 
     name = models.CharField(max_length=20)
@@ -87,7 +83,6 @@ class Profile(models.Model):
         ('Мужской', "Мужской"),
         ('Женский', "Женский")
     )
-
     
     phone = models.CharField(max_length=15, verbose_name="Мобильный телефон")
     sex = models.CharField(max_length=10, choices=SEX, verbose_name="Пол")
@@ -99,7 +94,6 @@ class Profile(models.Model):
     favorite_subject = models.ManyToManyField(Subject, verbose_name="Любимые предметы")
     mark = models.CharField(max_length=3, default='0.0', verbose_name="Средний балл")
     photo = models.ImageField(blank=True, upload_to='photos', verbose_name="Аватар")
-    # reports = models.ForeignKey(Report, verbose_name="Отчёты", on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         verbose_name = "Личные данные"
