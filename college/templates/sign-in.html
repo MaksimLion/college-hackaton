@@ -8,33 +8,37 @@
 
 <div class="auth-block">
     <div class="auth-header">ВХОД В АККАУНТ</div>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         <strong>Oh no!</strong> Something terrible happened!
-    </div>
+    </div> -->
     <form class="auth-form" method="POST" action="/sign_in/">
 
         {% csrf_token %}
 
         {% for field in user_form %}
         <div>
-            <label class="col-form-label field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <label class="col-form-label field-label" for="{{ field.id_for_label
+                }}">{{ field.label }}</label>
             {{field|add_class:'form-control'}}
         </div>
         {% endfor %}
 
         {% for field in profile_form %}
         <div>
-            <label class="col-form-label field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <label class="col-form-label field-label" for="{{ field.id_for_label
+                }}">{{ field.label }}</label>
             {{field|add_class:'form-control'}}
         </div>
         {% endfor %}
 
         <div class="btn-auth_block">
-            <input class="btn btn-outline-success btn-squared btn-auth" type="submit" value="Войти">
-            <input onclick="signup()" class="btn btn-secondary btn-squared" type="button" value="Зарегистрироваться">
+            <input class="btn btn-outline-success btn-squared btn-auth"
+                type="submit" value="Войти">
+            <input onclick="signup()" class="btn btn-secondary btn-squared"
+                type="button" value="Зарегистрироваться">
         </div>
 
     </form>
