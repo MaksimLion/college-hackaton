@@ -1,13 +1,18 @@
-# from django import forms
-# from .models import Report
+from django import forms
+from authentication.models import Subject
+from .models import Report
 
-# class CreateReportForm(forms.Form):
-#     title = forms.Charfield()
-#     file = forms.FileField()
-    
-#     class Meta:
-#         model = Report
-#         fields = (
-#             'title',
-#             'file',
-#         )
+
+class NameModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s"%obj.name
+
+class CreateReportForm(forms.Form):
+    subject = NameModelChoiceField(
+        label = 'Предмет',
+        queryset = Subject.objects.all(),
+    )
+    class Meta:
+        fields = (
+           'subject',
+        )

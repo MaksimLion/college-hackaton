@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-# from authentication.models import Subject
+from authentication.models import Subject, Profile
 
 
 # class Test(models.Model):
@@ -31,7 +31,9 @@ from django.contrib.auth.models import User
 
 
 class Report(models.Model):
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, blank=True, null=True)
     name_executor = models.CharField(max_length=100, verbose_name="Исполнитель")
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)
     group = models.CharField(max_length=10, verbose_name="Группа")
     title = models.CharField(max_length=30, verbose_name="Название")
     file = models.FileField(upload_to="reports/", verbose_name="Отчёт")

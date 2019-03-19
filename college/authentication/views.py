@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Profile
 from virtual_education.models import Report
 from .forms import UserForm, ProfileForm, AuthForm
-# from virtual_education.forms import CreateReportForm
+from virtual_education.forms import CreateReportForm
 from django.contrib.auth import authenticate,login
 
 
@@ -105,7 +105,7 @@ def my_account(request):
         skills = profile.skills.all()
         achievements = profile.achievements.all()
         favorite_subjects = profile.favorite_subject.all()
-        # form = CreateReportForm()
+        form = CreateReportForm()
         context = {
             'first_name' : first_name,
             'last_name' : last_name,
@@ -119,7 +119,7 @@ def my_account(request):
             'favorite_subjects' : favorite_subjects,
             'achievements' : achievements,
             'photo' : photo,
-            # 'form' : form,
+            'form' : form,
         }
 
         return render(request, 'student.html', context)
@@ -131,13 +131,13 @@ def send_report(request):
     if request.method == 'POST':
         title = request.POST['title']
         file = request.POST['file']
-
-        # file = report_object.cleaned_data.get('file')
-        # title = report_object.cleaned_data.get('title')
+        subject_form = CreateReportForm(request.POST)
+        if subject_form.is_valid():
+            subject_object = subject_form.cleaned_data['subject']
         author = Profile.objects.get(user_id=request.user.pk)
         group = author.group
-        name = "request.user.get_full_name()"
-        Report.objects.create(name_executor=name, group=group, file=file, title=title)
+        name = request.user.get_full_name()
+        Report.objects.create(name_executor=name, group=group, file=file, title=title, user=author, subject=subject_object)
         return redirect('/my_account/')
  
 
