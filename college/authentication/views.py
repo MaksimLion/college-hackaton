@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Profile
+from virtual_education.models import Report
 from .forms import UserForm, ProfileForm, AuthForm
 # from virtual_education.forms import CreateReportForm
 from django.contrib.auth import authenticate,login
@@ -135,7 +136,7 @@ def send_report(request):
         # title = report_object.cleaned_data.get('title')
         author = Profile.objects.get(user_id=request.user.pk)
         group = author.group
-        name = request.user.get_full_name()
+        name = "request.user.get_full_name()"
         Report.objects.create(name_executor=name, group=group, file=file, title=title)
         return redirect('/my_account/')
  

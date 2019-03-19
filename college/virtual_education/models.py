@@ -37,7 +37,7 @@ class Report(models.Model):
     file = models.FileField(upload_to="reports/", verbose_name="Отчёт")
 
     def __str__(self):
-        return self.name + '---' + self.group
+        return self.name_executor + '---' + self.group + '---' + self.title
 
     class Meta:
         verbose_name = "Отчёт"
