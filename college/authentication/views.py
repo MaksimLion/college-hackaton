@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Profile
 from virtual_education.models import Report, Lab
 from .forms import UserForm, ProfileForm, AuthForm
-from virtual_education.forms import CreateReportForm
+from virtual_education.forms import CreateReportForm, FilterLab
 from django.contrib.auth import authenticate,login
 
 
@@ -152,11 +152,29 @@ def statistics(request):
 
 
 def labs(request):
-    labs = Lab.objects.all().prefetch_related('subject')
-    context = {
-        'labs' : labs
-    }
-    return render(request, 'labs.html', context)
+    if request.method == 'GET':
+        labs = Lab.objects.all().prefetch_related('subject')
+        filter_form = FilterLab()
+        context = {
+            'labs' : labs,
+            'forms' : filter_form,
+        }
+
+        return render(request, 'labs.html', context)
+
+    elif request.method == 'POST':
+        subject_form = FilterLab(request.POST)
+        if subject_form.is_valid():
+            subject = subject_form.cleaned_data.get('subject')
+            labs = Lab.objects.filter(subject=subject.pk)
+            filter_form = FilterLab()
+            context = {
+            'labs' : labs,
+            'forms' : filter_form,
+            }   
+            return render(request, 'labs.html', context)
+
+
 
 
 def lab_detail(request,lab_id):

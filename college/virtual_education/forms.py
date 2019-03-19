@@ -13,8 +13,20 @@ class CreateReportForm(forms.Form):
         label = 'Предмет',
         queryset = Subject.objects.all(),
     )
-    
+
     class Meta:
         fields = (
            'subject',
+        )
+
+
+class FilterLab(forms.Form):
+    subject = NameModelChoiceField(
+        label="Предмет",
+        queryset = Subject.objects.all()
+    )
+
+    class Meta:
+        fields = (
+            'subject',
         )
