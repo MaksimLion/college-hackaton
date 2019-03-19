@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import UserForm, ProfileForm, AuthForm
-from virtual_education.forms import CreateReportForm
+# from virtual_education.forms import CreateReportForm
 from django.contrib.auth import authenticate,login
 
 
@@ -104,7 +104,7 @@ def my_account(request):
         skills = profile.skills.all()
         achievements = profile.achievements.all()
         favorite_subjects = profile.favorite_subject.all()
-        form = CreateReportForm()
+        # form = CreateReportForm()
         context = {
             'first_name' : first_name,
             'last_name' : last_name,
@@ -118,7 +118,7 @@ def my_account(request):
             'favorite_subjects' : favorite_subjects,
             'achievements' : achievements,
             'photo' : photo,
-            'form' : form,
+            # 'form' : form,
         }
 
         return render(request, 'student.html', context)

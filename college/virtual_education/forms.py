@@ -1,13 +1,13 @@
-from django import forms
-from .models import Report
+# from django import forms
+# from .models import Report
 
-class CreateReportForm(forms.Form):
-    title = forms.Charfield()
-    file = forms.FileField()
+# class CreateReportForm(forms.Form):
+#     title = forms.Charfield()
+#     file = forms.FileField()
     
-    class Meta:
-        model = Report
-        fields = (
-            'title',
-            'file',
-        )
+#     class Meta:
+#         model = Report
+#         fields = (
+#             'title',
+#             'file',
+#         )
