@@ -135,9 +135,9 @@ def send_report(request):
             group = author.group
             name = user.get_full_name()
             Report.objects.create(name_executor=name, group=group, file=file, title=title)
-            return redirect('/my-account/')
-        return redirect('/my-account/')
-    return redirect('/my-account/')
+            return redirect('/my_account/')
+        return redirect('/my_account/')
+    return redirect('/my_account/')
 
 
 def logout_view(request):
