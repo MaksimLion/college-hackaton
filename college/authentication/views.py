@@ -125,20 +125,22 @@ def my_account(request):
     else:
         return redirect('/sign_in/')
 
+
 def send_report(request):
     if request.method == 'POST':
         report_form = CreateReportForm(request.POST)
+
         if report_form.is_valid():
-            report_form.save(commit=False)
-            file = report_form.cleaned_data.get('file')
-            title = report_form.cleaned_data.get('title')
+            report_object = report_form.save(commit=False)
+            file = report_object.cleaned_data.get('file')
+            title = report_object.cleaned_data.get('title')
             author = Profile.objects.get(user_id=request.user.pk)
             group = author.group
-            name = user.get_full_name()
+            name = request.user.get_full_name()
             Report.objects.create(name_executor=name, group=group, file=file, title=title)
             return redirect('/my_account/')
-        return redirect('/my_account/')
-    return redirect('/my_account/')
+        return redirect('/admin/')
+    return redirect('/sign_in/')
 
 
 def logout_view(request):
