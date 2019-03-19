@@ -106,6 +106,7 @@ def my_account(request):
         achievements = profile.achievements.all()
         favorite_subjects = profile.favorite_subject.all()
         form = CreateReportForm()
+        report_statuses = Report.objects.filter(user=request.user.pk).prefetch_related('subject')
         context = {
             'first_name' : first_name,
             'last_name' : last_name,
@@ -120,6 +121,7 @@ def my_account(request):
             'achievements' : achievements,
             'photo' : photo,
             'form' : form,
+            'reports' : report_statuses,
         }
 
         return render(request, 'student.html', context)
