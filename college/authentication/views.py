@@ -143,7 +143,8 @@ def send_report(request):
 
 def statistics(request):
     if request.user.is_authenticated:
-        report_statuses = Report.objects.filter(user=request.user.pk).prefetch_related('subject')
+        profile = Profile.objects.get(user_id=request.user.pk)
+        report_statuses = Report.objects.filter(user=profile.pk).prefetch_related('subject')
         context = {
             'reports' : report_statuses
         }
