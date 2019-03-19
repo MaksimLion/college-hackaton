@@ -171,8 +171,8 @@ def labs(request):
             context = {
             'labs' : labs,
             'forms' : filter_form,
-            }   
-            return render(request, 'labs.html', context)
+            }
+        return render (request, 'labs.html', context)
 
 
 
