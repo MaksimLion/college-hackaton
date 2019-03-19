@@ -7,6 +7,7 @@ from virtual_education.models import Report
 
 class Subject(models.Model):
     name = models.CharField(max_length=10, verbose_name="Название")
+    reports = models.ForeignKey(Report, on_delete=models.CASCADE, blank=True, null=True)
     
     class Meta:
         verbose_name = "Предмет"

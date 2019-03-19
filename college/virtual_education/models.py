@@ -35,6 +35,7 @@ class Report(models.Model):
     group = models.CharField(max_length=10, verbose_name="Группа")
     title = models.CharField(max_length=30, verbose_name="Название")
     file = models.FileField(upload_to="reports/", verbose_name="Отчёт")
+    is_accept = models.BooleanField(default=False, verbose_name="Зачтено")
 
     def __str__(self):
         return self.name_executor + '---' + self.group + '---' + self.title
