@@ -3,17 +3,17 @@ from django.contrib.auth.models import User
 from authentication.models import Subject, Profile
 
 
-# class Test(models.Model):
-#     title = models.CharField(max_length=30, verbose_name="Название")
-#     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-#     questions = models.ArrayField()
+class Test(models.Model):
+    title = models.CharField(max_length=30, verbose_name="Название")
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name="Предмет")
+    file = models.FileField(upload_to="tests/", verbose_name="Файл")
     
-#     def __str__(self):
-#         return self.title
+    def __str__(self):
+        return self.title
 
-#     class Meta:
-#         verbose_name = "Тест"
-#         verbose_name_plural = "Тесты"
+    class Meta:
+        verbose_name = "Тест"
+        verbose_name_plural = "Тесты"
     
 
 class Lab(models.Model):

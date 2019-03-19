@@ -179,10 +179,10 @@ def labs(request):
 
 def lab_detail(request,lab_id):
     lab = Lab.objects.get(pk=lab_id)
-    with open(lab.read_file, 'rb') as pdf:
-        text = pdf.readline()
+    # with open(lab.read_file, 'rb') as pdf:
+    #     text = pdf.readline()
     context = {
-        'text' : text
+        'text' : lab
     }
     return render(request, 'lab_detail.html', context)
 
