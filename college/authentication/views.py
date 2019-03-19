@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import UserForm, ProfileForm, AuthForm
+from virtual_education.forms import CreateReportForm
 from django.contrib.auth import authenticate,login
 
 
@@ -103,6 +104,7 @@ def my_account(request):
         skills = profile.skills.all()
         achievements = profile.achievements.all()
         favorite_subjects = profile.favorite_subject.all()
+        form = CreateReportForm()
         context = {
             'first_name' : first_name,
             'last_name' : last_name,
@@ -115,13 +117,25 @@ def my_account(request):
             'mark' : mark,
             'favorite_subjects' : favorite_subjects,
             'achievements' : achievements,
-            'photo' : photo
+            'photo' : photo,
+            'form' : form,
         }
 
         return render(request, 'student.html', context)
     else:
         return redirect('/sign_in/')
 
+def send_report(request):
+    if request.method == 'POST':
+        report_form = CreateReportForm(request.POST)
+        if report_form.is_valid():
+            file = report_form.cleaned_data.get('file')
+            title = report_form.cleaned_data.get('title')
+            author = Profile.objects.get(user_id=request.user.pk)
+            group = author.group
+            name = user.get_full_name()
+            Report.objects.create(name_executor=name, group=group, file=file, title=title)
+            return redirect('/my-account')
 
 def logout_view(request):
     logout(request)

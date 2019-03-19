@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from virtual_education.models import Report
 
 
 class Subject(models.Model):
@@ -98,6 +99,7 @@ class Profile(models.Model):
     favorite_subject = models.ManyToManyField(Subject, verbose_name="Любимые предметы")
     mark = models.CharField(max_length=3, default='0.0', verbose_name="Средний балл")
     photo = models.ImageField(blank=True, upload_to='photos', verbose_name="Аватар")
+    reports = models.ForeignKey(Report, verbose_name="Отчёты", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Личные данные"
