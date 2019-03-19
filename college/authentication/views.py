@@ -182,7 +182,7 @@ def lab_detail(request,lab_id):
     # with open(lab.read_file, 'rb') as pdf:
     #     text = pdf.readline()
     context = {
-        'text' : ord(lab.read_file),
+        'text' : lab.read_file.read(),
     }
     return render(request, 'lab_detail.html', context)
 
