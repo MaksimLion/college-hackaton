@@ -99,7 +99,7 @@ class Profile(models.Model):
     favorite_subject = models.ManyToManyField(Subject, verbose_name="Любимые предметы")
     mark = models.CharField(max_length=3, default='0.0', verbose_name="Средний балл")
     photo = models.ImageField(blank=True, upload_to='photos', verbose_name="Аватар")
-    reports = models.ForeignKey(Report, verbose_name="Отчёты", on_delete=models.CASCADE, blank=True)
+    reports = models.ForeignKey(Report, verbose_name="Отчёты", on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         verbose_name = "Личные данные"
