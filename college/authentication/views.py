@@ -72,7 +72,7 @@ def sign_up(request):
             new_user.save()
             username = user_form.cleaned_data.get('username')
             password = user_form.cleaned_data.get('password')
-           # new_user = authenticate(request, username=username, password=password)
+            # new_user = authenticate(request, username=username, password=password)
             #login(request, new_user)
             return redirect('/sign_in/')
 
@@ -136,7 +136,10 @@ def send_report(request):
             name = user.get_full_name()
             Report.objects.create(name_executor=name, group=group, file=file, title=title)
             return redirect('/my-account')
+        return redirect('/my-account')
+    return redirect('/my-account')
 
+    
 def logout_view(request):
     logout(request)
     return redirect('sign_in/')
