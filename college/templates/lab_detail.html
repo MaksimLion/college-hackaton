@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block extra-styles %}
+<link rel="stylesheet" href="{% static 'css/lab_detail.css' %}">
+{% endblock extra-styles %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="content">
+    <div class="header">ПРОСМОТР ЛАБОРАТОРНОЙ РАБОТЫ</div>
+    <div class="text">
+        {% for line in text %}
+            {{line}}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content%}

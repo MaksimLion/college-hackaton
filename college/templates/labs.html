@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block extra-styles %}
+<link rel="stylesheet" href="{% static 'css/labs.css' %}">
+{% endblock extra-styles %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="content">
+    <div class="header">ЛАБОРАТОРНЫЕ РАБОТЫ</div>
+    <div class="labs-container">
+        <div class="labs-filter">
+            <form class="auth-form form-filter" method="POST" action="/labs/">
+                {% csrf_token %}
+
+                {% for field in forms %}
+                {{field|add_class:'form-control'}}
+                {% endfor %}
+                <div class="form-submit"><input type="submit" class="btn
+                        btn-outline-primary btn-squared btn-submit"
+                        value="Применить"></div>
+            </form>
+        </div>
+        <div class="labs-items">
+            {% for lab in labs %}
+            <div class="lab">
+                <div class="lab-title">{{lab.subject.name}}</div>
+                <a href="{{lab.id}}">{{lab.title}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

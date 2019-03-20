@@ -15,7 +15,7 @@
     padding: 10px 20px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -23,7 +23,8 @@
     cursor: default;
 }
 
-.btn-edit {
+.btn-report {
+    margin: 12px 6px 0 6px;
     font-size: 1.1rem;
 }
 
@@ -59,7 +60,7 @@
 }
 
 .description-list {
-    padding-left: 22px;
+    padding-left: 16px;
     margin-top: 8px;
     list-style-type: none;
 }
@@ -69,11 +70,11 @@
 }
 
 .desc-title {
-    min-width: 130px;
+    min-width: 120px;
     color: #747474;
 }
 
-.skills {
+.reports {
     box-shadow: 0 1px 10px 0 #d7d8db, 0 0 0 1px #d4d5d8;
     display: flex;
     flex-direction: column;
@@ -83,7 +84,7 @@
     overflow: hidden;
 }
 
-.skills-header {
+.reports-header {
     box-shadow: 0 0px 6px 0 #343a40;
     cursor: default;
     display: flex;
@@ -92,26 +93,6 @@
     color: #f2f2f2;
     font-size: 1.1rem;
     padding: 4px 0;
-}
-
-.skills-list {
-    margin-top: 12px;
-    list-style-type: none;
-    padding: 0 30px;
-}
-
-.skills-item {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: #d4d4d4 solid 1px;
-}
-
-.skill-title {
-    color: #747474;
-}
-
-.skill-logo {
-    width: 16px;
 }
 
 .achivments {
@@ -135,49 +116,11 @@
     box-shadow: 0 0px 6px 0 #343a40;
 }
 
-.achivments-list {
-    padding: 0 8px;
-    padding-top: 4px;
-}
-
-.achivments-item {
-    box-shadow: 0 1px 6px 0 #d7d8db, 0 0 0 1px #d4d5d8;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 15px;
-    width: 100%;
-}
-
-.ach-list {
-    list-style-type: none;
-    padding-left: 18px;
-    padding-right: 18px;
-}
-
-.ach-item {
-    height: auto;
-    margin-top: 8px;
-}
-
-.ach-list:last-child {
-    margin-bottom: 8px;
-}
-
-.ach-title {
-    margin-right: 4px;
-    cursor: default;
-    background-color: #343a40;
-    color: #f2f2f2;
-    padding: 1px 3px;
-    border-radius: 2px;
-}
-
 .company-logo {
     width: 30px;
 }
 
-.career {
+.labs {
     box-shadow: 0 1px 10px 0 #d7d8db, 0 0 0 1px #d4d5d8;
     display: flex;
     flex-direction: column;
@@ -185,9 +128,10 @@
     margin-top: 20px;
     width: 100%;
     overflow: hidden;
+    padding-bottom: 8px;
 }
 
-.career-header {
+.labs-header {
     cursor: default;
     display: flex;
     justify-content: center;
@@ -198,25 +142,13 @@
     box-shadow: 0 0px 6px 0 #343a40;
 }
 
-.career-list {
-    list-style-type: none;
-    padding-left: 25px;
-    display: flex;
+.form-control:focus {
+    border-color: #49b396;
+    box-shadow: 0 0 0 0.2rem rgba(73, 179, 150,.25);
 }
 
-.career-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    padding-right: 15px;
-    padding-left: 15px;
-    border-right: 1px solid #d4d4d4;
-    cursor: default;
-}
-
-.career-item img {
-    margin-right: 2px;
+.form-control:hover:focus {
+    border-color: #49b396;
 }
 
 @media only screen and (max-width: 1024px) {

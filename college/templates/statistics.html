@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block extra-styles %}
+<link rel="stylesheet" href="{% static 'css/statistics.css' %}">
+{% endblock extra-styles %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="content">
+    <div class="header">ОТЧЁТЫ</div>
+    <div class="reports">
+        {% for report in reports %}
+        <div class="report">
+            <div class="report-title">{{report.title}}</div>
+            <div class="report-name-status">
+                <div class="report-name">{{report.subject.name}}</div>
+                <div class="report-status">{{report.status}}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content%}
