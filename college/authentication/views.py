@@ -180,11 +180,6 @@ def labs(request):
 
 def lab_detail(request,lab_id):
     lab = Lab.objects.get(pk=lab_id)
-    # with open(lab.read_file, 'rb') as pdf:
-    #     text = pdf.readline()
-    context = {
-        'text' : lab.read_file.readline()
-    }
     return FileResponse(lab.read_file.open(mode='rb'), content_type='application/pdf')
 
 
