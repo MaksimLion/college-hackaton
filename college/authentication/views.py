@@ -185,7 +185,7 @@ def lab_detail(request,lab_id):
     context = {
         'text' : lab.read_file.readline()
     }
-    return FileResponse(open(lab.read_file.url, 'rb'), content_type='application/pdf')
+    return FileResponse(lab.read_file.open(mode='rb'), content_type='application/pdf')
 
 
 def logout_view(request):
