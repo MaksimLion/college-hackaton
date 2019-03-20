@@ -131,7 +131,7 @@ def my_account(request):
 def send_report(request):
     if request.method == 'POST':
         title = request.POST['title']
-        subject_form = CreateReportForm(request.POST, request.file)
+        subject_form = CreateReportForm(request.POST, request.FILES)
         if subject_form.is_valid():
             subject_object = subject_form.cleaned_data['subject']
             file = subject_form.cleaned_data['file']
