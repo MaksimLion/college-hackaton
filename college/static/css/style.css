@@ -1,0 +1,207 @@
+body {
+    //height: 2000px;
+    margin-bottom: 100px;
+    background: linear-gradient(to top right, #2d897a 0%, #1c2a33 60%, #2d897a 79%, #1c2a33 100%);
+}
+.container {
+    padding: 0;
+    max-width: 1140px;
+    background-color: #f2f2f2;
+    box-shadow: 0px 0px 41px 2px rgba(28, 42, 51, 0.58);
+    margin-top: 40px;
+    //height: 1800px;
+}
+.header-register-image-block {
+    width: 100%;
+    background: url('../img/laptop.jpg') center center;
+    background-size: cover;
+}
+.navbar {
+    padding: 0;
+}
+.header {
+    background-color: rgba(66, 67, 69, 0.67);
+}
+#logo {
+    font-family: 'Comfortaa', cursive;
+    font-size: 21pt;
+    color: #22c4a8;
+}
+.nav-link {
+    font-family: 'Comfortaa', cursive;
+    font-size: 9pt;
+}
+
+.navbar-toggler {
+    border: 0;
+}
+.navbar-toggler-icon:hover {
+    transform: rotateX(360grad);
+}
+.navbar-toggler:focus {
+    outline: 0;
+}
+.navbar-toggler:active {
+    opacity: 0.5;
+}
+.register-block {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding-top: 23.73%;
+    padding-bottom: 23.73%;
+}
+@media only screen and (max-width: 768px) {
+    .navbar {
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    .register-block {
+        padding-top: 45%;
+    }
+}
+.register-top-block {
+    background-color: rgba(31, 71, 70, 0.79);
+}
+.register-top-h {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 21pt;
+    color: #f2f2f2;
+    margin-top: 5px;
+    margin-left: 53px;
+}
+.register-top-block p {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 17pt;
+    text-shadow: 1.5px 1.5px 1px rgba(0,0,0,1);
+    color: #19c7a5;
+    line-height: 1.2;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+.register-bottom-block {
+    background-color: #256f62;
+	display:flex;
+	justify-content: center;
+}
+.register-bottom-block button {
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 17pt; /*13*/
+    color: #19d1b5;
+    background-color: #2f8e7d;
+    border: 0;
+    padding: 3px 9px 1px 11px;
+    margin: 2px auto;
+    box-shadow: 0px 1px 3px 0px rgba(28, 42, 51, 0.65) inset;
+    transition: background-color 0.15s linear,
+                color 0.15s linear;
+}
+.register-bottom-block button:hover {
+    background: #2ead96;
+    color: #256f62;
+}
+.register-bottom-block button i {
+    font-size: 15pt;
+}
+
+@media only screen and (min-width : 474px) {
+    .register-top-block {
+		width: 40.8%;
+		min-width: 456px;
+    }
+    .register-bottom-block {
+        width: 40.8%;
+        min-width: 456px;
+    }
+}
+@media only screen and (max-width : 473px) {
+    .register-top-block {
+        width: 100%;
+    }
+    .register-bottom-block {
+        width: 100%;
+    }
+}
+
+.register-bottom-block button:focus {
+    outline: 0;
+}
+.register-bottom-block button:hover {
+    cursor: pointer;
+}
+.bhr {
+    height: 3px;
+    width: 100%;
+}
+.bhr-light {
+    background-color: #14e0b8;
+}
+.bhr-white {
+    background-color: white;
+}
+.flex-spec-block {
+    display: flex;
+}
+.spec-block {
+    width: 25%;
+}
+@media only screen and (max-width: 768px) {
+    .flex-spec-block {
+        flex-wrap: wrap;
+    }
+    .spec-block{
+        width: 50%;
+    }
+    .spec-block-light + .spec-block-dark {
+        order: 4;
+    }
+}
+.spec-block-dark {
+    background-color: #1c2a33;
+}
+.spec-block-light {
+    background-color: #19ceab;
+}
+.spec-block {
+    text-align: center;
+}
+.spec-block i {
+    font-size: 35pt;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.spec-block p {
+    margin-bottom: 20px;
+    font-family: 'Comfortaa', cursive;
+    font-size: 12pt;
+}
+.spec-block-dark p, .spec-block-dark i {
+    color: #19ceab;
+}
+.spec-block-light p, .spec-block-light i {
+    color: #1c2a33;
+}
+.carousel-inner img {
+    //max-height: 641px !important;
+    //min-width: 100%;
+}
+.carousel-caption {
+    font-family: 'Poiret One', sans-serif;
+}
+.carousel-caption h3 {
+    font-weight: 600;
+}
+.carousel-caption p {
+    text-shadow: 1.5px 1.5px 1px rgba(0,0,0,1);
+}
+
+.chin {
+    height: 40px;
+    background-color: #1c2a33;
+}

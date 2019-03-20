@@ -3,7 +3,5 @@ from authentication.models import Profile, Technology, Subject, Achievement, ItC
 
 
 admin.site.register(Profile)
-admin.site.register(Technology)
 admin.site.register(Subject)
-admin.site.register(Achievement)
-admin.site.register(ItCompany)
+

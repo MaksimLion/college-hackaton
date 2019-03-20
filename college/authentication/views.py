@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate,login
 def student(request):
     return render(request, 'student.html')
 
+def index(request):
+    return render(request, 'index.html')
 
 def sign_in(request):
     
