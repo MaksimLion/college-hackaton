@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import FileResponse
 from .models import Profile
 from virtual_education.models import Report, Lab
 from .forms import UserForm, ProfileForm, AuthForm
@@ -182,9 +183,9 @@ def lab_detail(request,lab_id):
     # with open(lab.read_file, 'rb') as pdf:
     #     text = pdf.readline()
     context = {
-        'text' : chr(lab.read_file.readline())
+        'text' : lab.read_file.readline()
     }
-    return render(request, 'lab_detail.html', context)
+    return FileResponse(lab.read_file,content_type='application/pdf')
 
 
 def logout_view(request):
