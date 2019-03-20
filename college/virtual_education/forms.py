@@ -13,6 +13,7 @@ class CreateReportForm(forms.Form):
         label = 'Предмет',
         queryset = Subject.objects.all(),
     )
+    file = forms.FileField()
     
     class Meta:
         fields = (
