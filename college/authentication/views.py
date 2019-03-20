@@ -131,10 +131,10 @@ def my_account(request):
 def send_report(request):
     if request.method == 'POST':
         title = request.POST['title']
-        file = request.POST['file']
         subject_form = CreateReportForm(request.POST)
         if subject_form.is_valid():
             subject_object = subject_form.cleaned_data['subject']
+            file = subject_form.cleaned_data['file']
         author = Profile.objects.get(user_id=request.user.pk)
         group = author.group
         name = request.user.get_full_name()
