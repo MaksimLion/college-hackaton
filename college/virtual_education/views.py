@@ -106,20 +106,3 @@ class LabDetail(View):
     def get(self, requetst, lab_id):
         lab = Lab.objects.get(pk=lab_id)
         return FileResponse(lab.read_file.open(mode='rb'), content_type='application/pdf')
-
-
-
-
-def send_report(request):
-    if request.method == 'POST':
-        title = request.POST['title']
-        subject_form = CreateReportForm(request.POST, request.FILES)
-        if subject_form.is_valid():
-            subject_object = subject_form.cleaned_data['subject']
-            file = subject_form.cleaned_data['file']
-        author = Profile.objects.get(user_id=request.user.pk)
-        group = author.group
-        name = request.user.get_full_name()
-        Report.objects.create(name_executor=name, group=group, file=file, title=title, user=author, subject=subject_object)
-        return redirect('/my_account/')
- 
