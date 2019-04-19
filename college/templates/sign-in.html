@@ -14,7 +14,7 @@
         </button>
         <strong>Oh no!</strong> Something terrible happened!
     </div> -->
-    <form class="auth-form" method="POST" action="/sign_in/">
+    <form class="auth-form" method="POST" action="">
 
         {% csrf_token %}
 
@@ -35,10 +35,8 @@
         {% endfor %}
 
         <div class="btn-auth_block">
-            <input class="btn btn-outline-success btn-squared btn-auth"
-                type="submit" value="Войти">
-            <input onclick="signup()" class="btn btn-secondary btn-squared"
-                type="button" value="Зарегистрироваться">
+            <input class="btn btn-outline-success btn-squared btn-auth" type="submit" value="Войти">
+            <input onclick="signup()" class="btn btn-secondary btn-squared" type="button" value="Зарегистрироваться">
         </div>
 
     </form>

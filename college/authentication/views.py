@@ -1,11 +1,11 @@
+from django.contrib.auth import authenticate,login
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import FileResponse
-from .models import Profile
+from virtual_education.forms import CreateReportForm, FilterLab
 from virtual_education.models import Report, Lab
 from .forms import UserForm, ProfileForm, AuthForm
-from virtual_education.forms import CreateReportForm, FilterLab
-from django.contrib.auth import authenticate,login
+from .models import Profile
 
 
 class SignUpView(View):
@@ -42,7 +42,7 @@ class SignUpView(View):
             
             )
 
-            return redirect('auth/sign_in/')     
+            return redirect('/auth/sign_in/')     
 
 
 class SignInView(View):
@@ -69,7 +69,7 @@ class SignInView(View):
             )
 
             login(request, user)
-            return redirect('/my_account')
+            return redirect('/my_account/')
 
 
 def logout_view(request):

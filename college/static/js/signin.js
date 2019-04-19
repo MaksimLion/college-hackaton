@@ -1,4 +1,4 @@
 function signin() {
     event.preventDefault()
-    document.location.href = "auth/sign_in"
+    document.location.href = "/auth/sign_in/"
 }

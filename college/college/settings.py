@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'virtual_education',
+    'quiz',
+    'multichoice',
+    'true_false',
+    'essay',
 ]
 
 MIDDLEWARE = [

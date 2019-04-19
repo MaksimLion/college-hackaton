@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+from django.http import FileResponse
 from django.views.generic.edit import CreateView
 from django.views import View
 from authentication.models import Profile
 from .forms import FilterLab, CreateReportForm
-from .models import Report
+from .models import Report, Lab
 
 
 class IndexView(View):
@@ -19,7 +20,7 @@ class MyAccountView(View):
     
     def get(self, request):
         profile = Profile.objects.get(user_id=request.user.pk)
-        form = form_class()
+        form = self.form_class()
         context = {
             'first_name' : request.user.first_name,
             'last_name' : request.user.last_name,
@@ -30,7 +31,7 @@ class MyAccountView(View):
             'career' : profile.career.all(),
             'skills' : profile.skills.all(),
             'mark' : profile.mark,
-            'favourite_subjects' : profile.favorite_subjects.all(),
+            'favourite_subjects' : profile.favorite_subject.all(),
             'achievements' : profile.achievements.all(),
             'photo' : profile.photo,
             'form' : form
@@ -85,7 +86,7 @@ class CreateReport(View):
 
         if form.is_valid():
             subject = form.cleaned_data.get('subject')
-            report = form.cleanded_data.get('file')
+            report = form.cleaned_data.get('file')
 
         author = Profile.objects.get(user_id=request.user.pk)
         group = author.group

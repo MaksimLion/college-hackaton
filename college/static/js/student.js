@@ -1,9 +1,9 @@
 function lookForMyReports() {
     event.preventDefault()
-    document.location.href = "/my_account/statistics"
+    document.location.href = "/my_account/labs/statistics"
 }
 
 function lookForLabs() {
     event.preventDefault()
-    document.location.href = "/labs"
+    document.location.href = "/my_account/labs"
 }
