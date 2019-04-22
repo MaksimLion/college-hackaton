@@ -1,8 +1,14 @@
 {% extends 'base-test.html' %}
 {% load i18n %}
+
+{% load staticfiles %} {% block extra-styles %}
+<link rel="stylesheet" href="{% static 'css/common.css' %}" />
+{% endblock extra-styles %}
+
 {% block title %}{% trans "All Quizzes" %}{% endblock %}
 
 {% block content %}
+<p class="goBack"><a onclick="goBack()">назад</a></p>
 <h2>{% trans "List of quizzes" %}</h2>
     {% if quiz_list %}
 		<table class="table table-bordered table-striped">
@@ -39,5 +45,7 @@
 
 	{% else %}
         <p>{% trans "There are no available quizzes" %}.</p>
-    {% endif %}
+		{% endif %}
+		<script src="{% static 'js/common.js' %}"></script>
 {% endblock %}
+

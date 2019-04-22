@@ -1,89 +1,144 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block extra-styles %}
-<link rel="stylesheet" href="{% static 'css/student.css' %}">
-<link rel="stylesheet" href="{% static 'css/createReport.css' %}">
-{% endblock extra-styles %}
-{% load widget_tweaks %}
-{% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block extra-styles %}
+<link rel="stylesheet" href="{% static 'css/student.css' %}" />
+<link rel="stylesheet" href="{% static 'css/createReport.css' %}" />
+{% endblock extra-styles %} {% load widget_tweaks %} {% block content %}
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form class="createReport" method="POST" action="/my_account/send_report/" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Отправка отчёта</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form
+        class="createReport"
+        method="POST"
+        action="/my_account/send_report/"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Отправка отчёта</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="createReport-input">
+            <label class="col-form-label field-label" for="report-title"
+              >Название:
+            </label>
+            <input
+              type="text"
+              id="report-title"
+              name="title"
+              class="form-control"
+            />
+          </div>
 
-                <div class="createReport-input">
-                    <label class="col-form-label field-label" for="report-title">Название: </label>
-                    <input type="text" id="report-title" name="title" class="form-control">
-                </div>
+          {% for field in form %}
+          <div class="createReport-input">
+            <label
+              class="col-form-label field-label"
+              for="{{ field.id_for_label }}"
+              >{{ field.label }}</label
+            >
+            {{field|add_class:'form-control'}}
+          </div>
+          {% endfor %}
 
-                {% for field in form %}
-                <div class="createReport-input">
-                    <label class="col-form-label field-label" for="{{ field.id_for_label
-                    }}">{{ field.label }}</label>
-                    {{field|add_class:'form-control'}}
-                </div>
-                {% endfor %}
-
-                <!-- <div class="createReport-input">
+          <!-- <div class="createReport-input">
                     <input type="file" name="file" class="form-control">
                 </div> -->
-            
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Отправить</button>
-                </div>
-            </form>
         </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Отправить</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 <div class="content">
-    <div class="content-header">
-        <h4>{{ first_name }} {{ last_name }}</h4>
-    </div>
+  <div class="content-header">
+    <h4>{{ first_name }} {{ last_name }}</h4>
+  </div>
 
-    <main class="main">
-        <div class="profile-info">
-            <div class="avatar">
-                <div class="img-block">
-                    <img src="https://dimensionus.com/wp-content/uploads/2017/07/user-avatar-dark.jpg" alt="avatar">
-                </div>
-                <div class="description">
-                    <ul class="description-list">
-                        <li class="description-item">
-                            <div class="desc-title">Группа:</div>{{ group }}
-                        </li>
-                        <li class="description-item">
-                            <div class="desc-title">Пол:</div>{{ sex }}
-                        </li>
-                        <li class="description-item">
-                            <div class="desc-title">Моб. телефон:</div>{{ phone }}
-                        </li>
-                        <li class="description-item">
-                            <div class="desc-title">Почта:</div>{{ email }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="reports">
-                <div class="reports-header">ОТЧЕТЫ</div>
-                <input class="btn btn-outline-info btn-squared btn-report" type="button" data-toggle="modal" data-target="#exampleModal" value="Создать отчет">
-                <input class="btn btn-outline-info btn-squared btn-report" type="button" onClick="lookForMyReports()" value="Просмотреть отчеты">
-            </div>
+  <main class="main">
+    <div class="profile-info">
+      <div class="avatar">
+        <div class="img-block">
+          <img
+            src="https://dimensionus.com/wp-content/uploads/2017/07/user-avatar-dark.jpg"
+            alt="avatar"
+          />
         </div>
-        <div class="labs">
-            <div class="labs-header">ЛАБОРАТОРНЫЕ РАБОТЫ</div>
-            <input class="btn btn-outline-info btn-squared btn-report" type="button" onClick="lookForLabs()" value="Просмотреть лабораторные работы">
+        <div class="description">
+          <ul class="description-list">
+            <li class="description-item">
+              <div class="desc-title">Группа:</div>
+              {{ group }}
+            </li>
+            <li class="description-item">
+              <div class="desc-title">Пол:</div>
+              {{ sex }}
+            </li>
+            <li class="description-item">
+              <div class="desc-title">Моб. телефон:</div>
+              {{ phone }}
+            </li>
+            <li class="description-item">
+              <div class="desc-title">Почта:</div>
+              {{ email }}
+            </li>
+          </ul>
         </div>
-    </main>
+      </div>
+      <div class="reports">
+        <div class="reports-header">ОТЧЕТЫ</div>
+        <input
+          class="btn btn-outline-info btn-squared btn-report"
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          value="Создать отчет"
+        />
+        <input
+          class="btn btn-outline-info btn-squared btn-report"
+          type="button"
+          onClick="lookForMyReports()"
+          value="Просмотреть отчеты"
+        />
+      </div>
+    </div>
+    <div class="labs-tests-block">
+      <div class="labs-tests" style="margin-right: 8px">
+        <div class="labs-tests-header">ЛАБОРАТОРНЫЕ РАБОТЫ</div>
+        <input
+          class="btn btn-outline-info btn-squared btn-report"
+          type="button"
+          onClick="lookForLabs()"
+          value="Просмотреть лабораторные работы"
+        />
+      </div>
+      <div class="labs-tests" style="margin-left: 8px">
+        <div class="labs-tests-header">ТЕСТЫ</div>
+        <input
+          class="btn btn-outline-info btn-squared btn-report"
+          type="button"
+          onClick="lookForTests()"
+          value="Просмотреть доступные тесты"
+        />
+      </div>
+    </div>
+  </main>
 </div>
 <script src="{% static 'js/student.js' %}"></script>
 

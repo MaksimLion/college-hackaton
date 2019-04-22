@@ -4,7 +4,12 @@
 {{ quiz.title }}
 {% endblock %}
 
+{% load staticfiles %} {% block extra-styles %}
+<link rel="stylesheet" href="{% static 'css/common.css' %}" />
+{% endblock extra-styles %}
+
 {% block content %}
+<p class="goBack"><a onclick="goBack()">назад</a></p>
 <h2>{{ quiz.title }}</h2>
 <h3>{% trans "Category" %}: {{ quiz.category }}</h3>
 {% if quiz.single_attempt %}
@@ -16,4 +21,5 @@
 	{% trans "Start quiz" %}
   </a>
 </p>
+<script src="{% static 'js/common.js' %}"></script>
 {% endblock %}

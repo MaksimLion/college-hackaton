@@ -1,0 +1,26 @@
+.goBack {
+    position: absolute;
+    cursor: pointer;
+    margin-top: 6px;
+    margin-left: -90px;
+    background-color: #1c8b97;
+    padding: 2px 9px;
+    border-radius: 2px;
+    box-shadow: -1px 0px 8px 0px rgba(50, 50, 50, 0.3);
+    transition: all 0.06s linear;
+}
+
+.goBack:hover {
+    background-color: #1c7c86;
+}
+
+.goBack a {
+    color: #ebebeb;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    transition: all 0.03s linear;
+}
+
+.goBack:hover a {
+    text-decoration: none;
+}
